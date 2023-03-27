@@ -25,3 +25,39 @@ header > button {
   height: 50px;
   border-radius: 10px;
 }
+
+main {
+  height: 100vh;
+  background-color: #e2e8f0;
+}
+
+.add-book > button {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.add-book > button:hover {
+  background-color: #d1d5db;
+}
+
+.my-books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card-body > a#read {
+  background-color: rgb(161, 255, 161);
+}
+
+.card-body > a#read:hover {
+  background-color: rgb(137, 216, 137);
+}
+
+.card-body > a#remove {
+  background-color: #d1d5db6a;
+}
+
+.card-body > a#remove:hover {
+  background-color: #d1d5db;
+}
