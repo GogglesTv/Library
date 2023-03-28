@@ -43,8 +43,59 @@ main {
   color: white;
 }
 
-.add-book > button:hover {
+.add-book > button:hover,
+#modal-header {
   background-color: #d1d5db;
+}
+
+#modalLabel {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#modalText > .card {
+  background-color: #e2e8f0;
+}
+
+form {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+form input {
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 10px;
+}
+
+.read-or-not {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.read-or-not > #read {
+  height: 25px;
+  width: 25px;
+  align-self: center;
+  margin-left: 20px;
+}
+
+.read-or-not > #read:checked {
+  background-color: white;
+  color: black;
+}
+
+#submit {
+  height: 60px;
+  font-size: 24px;
 }
 
 .my-books {
@@ -54,12 +105,10 @@ main {
   gap: 30px;
 }
 
-.card-body > a#read {
+.card-body > a#read,
+.card-body > a#read:hover,
+#submit {
   background-color: rgb(161, 255, 161);
-}
-
-.card-body > a#read:hover {
-  background-color: rgb(137, 216, 137);
 }
 
 .card-body > a#remove {
