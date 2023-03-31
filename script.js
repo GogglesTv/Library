@@ -25,6 +25,7 @@ let author;
 let pages;
 let read;
 let newBook;
+let duplicateBook;
 
 addBook.addEventListener("click", () => {
   console.log("Time to add a new book!");
@@ -41,22 +42,29 @@ readBook.addEventListener("click", () => {
 });
 
 submit.addEventListener("click", (e) => {
-  if (newRead.checked === true) {
-    read = "yes";
-  } else {
-    read = "no";
+  e.preventDefault();
+
+  if (myLibrary.length > 0) {
+    checkForDuplicateBook();
   }
 
-  newBook = new Book(newTitle.value, newAuthor.value, newPages.value, read);
-  console.log(newBook);
-  myLibrary.push(newBook);
-  addBookToLibrary();
+  if (!duplicateBook === true) {
+    if (myLibrary)
+      if (newRead.checked === true) {
+        read = "yes";
+      } else {
+        read = "no";
+      }
 
-  newTitle.value = "";
-  newAuthor.value = "";
-  newPages.value = "";
+    newBook = new Book(newTitle.value, newAuthor.value, newPages.value, read);
+    console.log(newBook);
+    myLibrary.push(newBook);
+    addBookToLibrary();
 
-  e.preventDefault();
+    newTitle.value = "";
+    newAuthor.value = "";
+    newPages.value = "";
+  }
 });
 
 function Book(title, author, pages, read) {
@@ -82,7 +90,7 @@ function addBookToLibrary() {
   bookAuthor = newCard.querySelector("#book-author");
   bookPages = newCard.querySelector("#book-pages");
   bookRead = newCard.querySelector("#book-read");
-  myBooks.append(newCard);
+
   bookTitle.innerHTML = newTitle.value;
   bookAuthor.innerHTML = newAuthor.value;
   bookPages.innerHTML = newPages.value;
@@ -90,6 +98,22 @@ function addBookToLibrary() {
     bookRead.style.backgroundColor = "#f87171";
     bookRead.innerHTML = "Not Read";
   }
+  myBooks.append(newCard);
 }
 
-console.log(myLibrary);
+function checkForDuplicateBook() {
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (
+      newTitle.value === myLibrary[i]["title"] &&
+      newAuthor.value === myLibrary[i]["author"]
+    ) {
+      console.log(myLibrary[i]["title"]);
+      console.log(myLibrary[i]["author"]);
+
+      alert("This book is already in your library");
+      duplicateBook = true;
+    }
+  }
+}
+
+console.log(myLibrary.length);
