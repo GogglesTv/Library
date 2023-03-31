@@ -48,7 +48,7 @@ submit.addEventListener("click", (e) => {
     checkForDuplicateBook();
   }
 
-  if (!duplicateBook === true) {
+  if (!(duplicateBook === true)) {
     if (myLibrary)
       if (newRead.checked === true) {
         read = "yes";
@@ -60,11 +60,10 @@ submit.addEventListener("click", (e) => {
     console.log(newBook);
     myLibrary.push(newBook);
     addBookToLibrary();
-
-    newTitle.value = "";
-    newAuthor.value = "";
-    newPages.value = "";
+    reset();
   }
+
+  reset();
 });
 
 function Book(title, author, pages, read) {
@@ -116,4 +115,10 @@ function checkForDuplicateBook() {
   }
 }
 
-console.log(myLibrary.length);
+function reset() {
+  newTitle.value = "";
+  newAuthor.value = "";
+  newPages.value = "";
+  newRead.checked = false;
+  duplicateBook = false;
+}
