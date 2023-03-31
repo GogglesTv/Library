@@ -1,6 +1,7 @@
 "use strict";
 
 const addBook = document.querySelector("#more-books");
+const readBook = document.querySelector("#book-read");
 
 const newTitle = document.querySelector("#new-title");
 const newAuthor = document.querySelector("#new-author");
@@ -27,23 +28,34 @@ let newBook;
 
 addBook.addEventListener("click", () => {
   console.log("Time to add a new book!");
+});
 
-  newTitle.value = "";
-  newAuthor.value = "";
-  newPages.value = "";
+readBook.addEventListener("click", () => {
+  if (readBook.innerHTML === "Not Read") {
+    readBook.style.backgroundColor = "#81fea4";
+    readBook.innerHTML = "Read";
+  } else {
+    readBook.style.backgroundColor = "#f87171";
+    readBook.innerHTML = "Not Read";
+  }
 });
 
 submit.addEventListener("click", (e) => {
   if (newRead.checked === true) {
     read = "yes";
   } else {
-    bookRead.style.backgroundColor = "red";
+    read = "no";
   }
 
   newBook = new Book(newTitle.value, newAuthor.value, newPages.value, read);
   console.log(newBook);
   myLibrary.push(newBook);
   addBookToLibrary();
+
+  newTitle.value = "";
+  newAuthor.value = "";
+  newPages.value = "";
+
   e.preventDefault();
 });
 
@@ -74,6 +86,10 @@ function addBookToLibrary() {
   bookTitle.innerHTML = newTitle.value;
   bookAuthor.innerHTML = newAuthor.value;
   bookPages.innerHTML = newPages.value;
+  if (read === "no") {
+    bookRead.style.backgroundColor = "#f87171";
+    bookRead.innerHTML = "Not Read";
+  }
 }
 
 console.log(myLibrary);
