@@ -16,6 +16,7 @@ let bookTitle = newCard.querySelector("#book-title");
 let bookAuthor = newCard.querySelector("#book-author");
 let bookPages = newCard.querySelector(".book-pages");
 let bookRead = newCard.querySelectorAll(".book-read");
+let bookRemove = newCard.querySelectorAll(".book-remove");
 
 let myLibrary = [];
 let title;
@@ -38,6 +39,12 @@ bookRead.forEach((book) =>
       book.style.backgroundColor = "#f87171";
       book.innerHTML = "Not Read";
     }
+  })
+);
+
+bookRemove.forEach((book) =>
+  book.addEventListener("click", () => {
+    newCard.remove();
   })
 );
 
@@ -88,7 +95,7 @@ function addBookToLibrary() {
   bookPages = newCard.querySelector("#book-pages");
   bookRead = newCard.querySelector(".book-read");
 
-  bookTitle.innerHTML = newTitle.value;
+  bookTitle.innerHTML = `"${newTitle.value}"`;
   bookAuthor.innerHTML = newAuthor.value;
   bookPages.innerHTML = `${newPages.value} pages`;
   if (read === "no") {
