@@ -1,8 +1,6 @@
 "use strict";
 
-const addBook = document.querySelector("#more-books");
-const readBook = document.querySelector("#book-read");
-
+const bookForm = document.querySelector("#book-form");
 const newTitle = document.querySelector("#new-title");
 const newAuthor = document.querySelector("#new-author");
 const newPages = document.querySelector("#new-pages");
@@ -16,8 +14,8 @@ let newCard = card.cloneNode(true);
 
 let bookTitle = newCard.querySelector("#book-title");
 let bookAuthor = newCard.querySelector("#book-author");
-let bookPages = newCard.querySelector("#book-pages");
-let bookRead = newCard.querySelector("#book-read");
+let bookPages = newCard.querySelector(".book-pages");
+let bookRead = newCard.querySelectorAll(".book-read");
 
 let myLibrary = [];
 let title;
@@ -27,19 +25,21 @@ let read;
 let newBook;
 let duplicateBook;
 
-addBook.addEventListener("click", () => {
+bookInfoInput.addEventListener("click", () => {
   console.log("Time to add a new book!");
 });
 
-readBook.addEventListener("click", () => {
-  if (readBook.innerHTML === "Not Read") {
-    readBook.style.backgroundColor = "#81fea4";
-    readBook.innerHTML = "Read";
-  } else {
-    readBook.style.backgroundColor = "#f87171";
-    readBook.innerHTML = "Not Read";
-  }
-});
+bookRead.forEach((book) =>
+  book.addEventListener("click", () => {
+    if (book.innerHTML === "Not Read") {
+      book.style.backgroundColor = "#81fea4";
+      book.innerHTML = "Read";
+    } else {
+      book.style.backgroundColor = "#f87171";
+      book.innerHTML = "Not Read";
+    }
+  })
+);
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
@@ -49,21 +49,20 @@ submit.addEventListener("click", (e) => {
   }
 
   if (!(duplicateBook === true)) {
-    if (myLibrary)
-      if (newRead.checked === true) {
-        read = "yes";
-      } else {
-        read = "no";
-      }
+    if (newRead.checked === true) {
+      read = "yes";
+    } else {
+      read = "no";
+    }
 
     newBook = new Book(newTitle.value, newAuthor.value, newPages.value, read);
     console.log(newBook);
     myLibrary.push(newBook);
     addBookToLibrary();
     reset();
+  } else {
+    reset();
   }
-
-  reset();
 });
 
 function Book(title, author, pages, read) {
@@ -84,15 +83,14 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary() {
   // do stuff here
-  newCard = card.cloneNode(true);
   bookTitle = newCard.querySelector("#book-title");
   bookAuthor = newCard.querySelector("#book-author");
   bookPages = newCard.querySelector("#book-pages");
-  bookRead = newCard.querySelector("#book-read");
+  bookRead = newCard.querySelector(".book-read");
 
   bookTitle.innerHTML = newTitle.value;
   bookAuthor.innerHTML = newAuthor.value;
-  bookPages.innerHTML = newPages.value;
+  bookPages.innerHTML = `${newPages.value} pages`;
   if (read === "no") {
     bookRead.style.backgroundColor = "#f87171";
     bookRead.innerHTML = "Not Read";
