@@ -90,6 +90,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary() {
   // do stuff here
+  card.classList.remove("hidden");
   bookTitle = newCard.querySelector("#book-title");
   bookAuthor = newCard.querySelector("#book-author");
   bookPages = newCard.querySelector("#book-pages");
