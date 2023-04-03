@@ -112,6 +112,14 @@ form input {
   gap: 30px;
 }
 
+.book-number {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+}
+
 button.book-read,
 .card-body > button.book-read:hover,
 #submit {
