@@ -99,6 +99,12 @@ form input {
   font-size: 24px;
 }
 
+#cancel {
+  height: 60px;
+  font-size: 24px;
+  background-color: #f87171;
+}
+
 .my-books {
   display: grid;
   align-items: start;
