@@ -118,6 +118,7 @@ form input {
   letter-spacing: 3px;
   display: flex;
   justify-content: center;
+  width: 50px;
 }
 
 button.book-read,
