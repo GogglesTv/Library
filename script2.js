@@ -43,6 +43,13 @@ function removeBook(index) {
   render();
 }
 
+function toggleRead(index) {
+  myLibrary[index]["read"] === "Read"
+    ? (myLibrary[index]["read"] = "Not Read")
+    : (myLibrary[index]["read"] = "Read");
+  render();
+}
+
 function addBookToLibrary() {
   // do stuff here
   newRead.checked === true
