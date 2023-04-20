@@ -55,7 +55,15 @@ function addBookToLibrary() {
   render();
 }
 
+function resetForm() {
+  newTitle.value = "";
+  newAuthor.value = "";
+  newPages.value = "";
+  newRead.checked = false;
+}
+
 submit.addEventListener("click", () => {
   event.preventDefault();
   addBookToLibrary();
+  resetForm();
 });
