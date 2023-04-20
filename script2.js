@@ -38,6 +38,11 @@ function render() {
   }
 }
 
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  render();
+}
+
 function addBookToLibrary() {
   // do stuff here
   newRead.checked === true
